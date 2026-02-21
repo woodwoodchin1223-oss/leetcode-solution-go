@@ -1,17 +1,15 @@
 func jump(nums []int) int {
-    answer := 0
-    n := len(nums)
-    curEnd := 0
-    curFar := 0
-
-    for i := 0; i < n - 1; i++ {
-        curFar = max(curFar, nums[i] + i)
-        if i == curEnd {
-            answer += 1
-            curEnd = curFar
+    currEnd := 0
+    currFar := 0
+    ans := 0
+    for i := 0; i < len(nums) - 1; i++ {
+        currFar = max(currFar, i + nums[i])
+        if i == currEnd {
+            currEnd = currFar
+            ans += 1
         }
     }
-    return answer
+    return ans
 }
 
 func max(a, b int) int {
